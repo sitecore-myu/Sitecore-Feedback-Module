@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\jquery-1.9.1.min.js" />
     <Content Include="PresentationLayer\FeedbackErrorPage.aspx" />
     <Content Include="js\feedback.js" />
     <Content Include="js\jquery.cookie.js" />

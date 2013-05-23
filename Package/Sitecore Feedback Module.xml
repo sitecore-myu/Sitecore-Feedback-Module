@@ -66,6 +66,7 @@
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/js/</x-item>
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/js/feedback.js</x-item>
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/js/jquery.cookie.js</x-item>
+        <x-item>/sitecore modules/Shell/Sitecore Feedback Module/js/jquery-1.9.1.min.js</x-item>
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/PresentationLayer/</x-item>
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/PresentationLayer/FeedbackErrorPage.aspx</x-item>
         <x-item>/sitecore modules/Shell/Sitecore Feedback Module/PresentationLayer/View/</x-item>
