@@ -1,0 +1,145 @@
+﻿/* COLORS */
+body {
+    background-color: #ececec;
+}
+
+.feedback_error h1,
+.feedback_error .content a {
+    color: #c73318;
+}
+
+.feedback_error .content {
+    background-color: #fff;
+}
+
+.feedback_error .content .form_error {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.feedback_error .content,
+.feedback_error .content .log_message {
+    border-color: #d8d8d8;
+}
+
+.feedback_error .content .form_error .button {
+    color: #fff;
+}
+
+.feedback_error .content .form_error label {
+    color: #606060;
+}
+
+.feedback_error .content .log_message,
+.feedback_error .content .form_error .validators,
+.feedback_error .content .form_error .validationError {
+    color: #f00;
+}
+
+/* BACKGROUNDS */
+.feedback_error .logo,
+.feedback_error .content .form_error .button {
+    background: url("../img/sprite.png") no-repeat 0 0;
+}
+
+/* FONTS */
+.feedback_error {
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+/*************************************/
+body {
+    margin: 0;
+    padding: 0;   
+}
+
+.feedback_error {
+    max-width: 980px;
+    min-width: 320px;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+.feedback_error .logo {
+    display: block;
+    width: 159px;
+    height: 40px;
+    margin: 10px 0; 
+}
+
+.feedback_error h1 {
+    font-size: 30px;
+}
+
+.feedback_error .content {
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.feedback_error .content a {
+    text-decoration: none;
+}
+
+.feedback_error .content a:hover {
+    text-decoration: underline;
+ }
+
+.feedback_error .content .log_message {
+    display: none;
+    padding: 20px 0;
+    border-style: solid;
+    border-width: 1px;
+    border-width: 1px 0;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.feedback_error .content .form_error {
+    max-width: 450px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.feedback_error .content .form_error .validators,
+.feedback_error .content .form_error .validationError {
+    font-size: 12px;
+}
+
+.feedback_error .content .form_error .control {
+    margin-bottom: 10px;
+}
+
+.feedback_error .content .form_error .control.btn {
+     width: 90%;
+}
+
+.feedback_error .content .form_error input,
+.feedback_error .content .form_error textarea,
+.feedback_error .content .form_error label {
+    display: inline-block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.feedback_error .content .form_error .button {
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border: 0;
+    background-position:  0 -43px;
+    line-height: 22px;
+    height: 22px;
+    width: 160px;
+    padding: 0;
+    display: block;
+}
+
+.feedback_error .content .form_error .button:hover {
+    background-position:  0 -67px;
+}
