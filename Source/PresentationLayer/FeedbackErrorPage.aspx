@@ -8,10 +8,18 @@
     <title>Sitecore :: Error</title>
     <meta name="author">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/sitecore modules/Shell/Sitecore Feedback Module//js/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/sitecore modules/Shell/Sitecore Feedback Module/css/FeedbackErrorPage.css">
 </head>
 <body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".log_link").click(function() {
+                $(".log_message").toggle('slow');
+                return false;
+            });
+        });
+    </script>
     <form id="form1" runat="server">
         <div class="feedback_error">
             <a class="logo" href="/"></a>

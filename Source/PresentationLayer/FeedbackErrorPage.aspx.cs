@@ -7,6 +7,7 @@ namespace Sitecore.Feedback.Module.PresentationLayer
   using Sitecore.Diagnostics;
   using Sitecore.Feedback.Module.BusinessLayer;
   using Sitecore.Feedback.Module.BusinessLayer.Model;
+  using Sitecore.Feedback.Module.BusinessLayer.Utils;
   using System;
   using System.Collections.Generic;
   using System.Globalization;
@@ -58,7 +59,7 @@ namespace Sitecore.Feedback.Module.PresentationLayer
 
       var computerInfo = new ComputerInfo();
       var browser = Request.Browser;
-      var feedbackProjectName = Sitecore.Configuration.Settings.GetSetting("Feedback.ProjectName");
+      var feedbackProjectName = ConfigurationsUtil.GetProjectName();
 
       var emailModel = new EmailModel
       {

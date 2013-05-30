@@ -3,13 +3,18 @@ namespace Sitecore.Feedback.Module.BusinessLayer.Configuration
 {
   using Sitecore.Diagnostics;
   using Sitecore.Install.Framework;
+  using Sitecore.Jobs.AsyncUI;
+  using Sitecore.Text;
+  using Sitecore.Web.UI.Sheer;
   using System;
   using System.Collections.Specialized;
   using System.IO;
+  using System.ServiceModel.Activation;
   using System.Text.RegularExpressions;
   using System.Web.Hosting;
   using System.Xml;
 
+  [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
   public class PostStep : IPostStep
   {
     public void Run(ITaskOutput output, NameValueCollection metaData)
@@ -17,6 +22,32 @@ namespace Sitecore.Feedback.Module.BusinessLayer.Configuration
       Assert.ArgumentNotNull(output, "output");
       Assert.ArgumentNotNull(metaData, "metaData");
       ChangeWebConfig();
+      JobContext.SendMessage("sfm:controlpanel");
+
+    }
+    protected void Process(ClientPipelineArgs args)
+    {
+      Assert.ArgumentNotNull(args, "args");
+      if (args.IsPostBack) return;
+      SheerResponse.ShowModalDialog(new UrlString(UIUtil.GetUri("control:JetstreamControlPanel")).ToString(), true);
+      args.WaitForPostBack();
+    }
+
+    public void Run(ClientPipelineArgs args)
+    {
+      if (!args.IsPostBack)
+      {
+        var urlString = new UrlString(UIUtil.GetUri("control:JetstreamControlPanel"));
+        SheerResponse.ShowModalDialog(urlString.ToString(), true);
+        args.WaitForPostBack();
+      }
+      else
+      {
+        if (args.HasResult)
+        {
+          SheerResponse.Alert("Response from JetstreamControlPanel: " + args.Result);
+        }
+      }
     }
 
     private static void ChangeWebConfig()
@@ -82,7 +113,6 @@ namespace Sitecore.Feedback.Module.BusinessLayer.Configuration
     {
       return HtmlRegex.Replace(source, string.Empty);
     }
-
     private static readonly Regex HtmlRegex = new Regex("<.*?>", RegexOptions.Compiled);
 
   }
