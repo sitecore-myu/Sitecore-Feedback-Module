@@ -21,10 +21,7 @@ namespace Sitecore.Feedback.Module.PresentationLayer
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-    }
-
-    private void Page_Init(object sender, EventArgs e)
-    {
+      Log.Info("FeedbackErrorPage: Load page!", this);
       if (!Request.Url.AbsolutePath.Contains("FeedbackErrorPage"))
       {
         var ctx = HttpContext.Current;
@@ -34,6 +31,7 @@ namespace Sitecore.Feedback.Module.PresentationLayer
         Session["ErrorLog_Source"] = exception.InnerException.Source;
         Session["ErrorLog_StackTrace"] = exception.InnerException.StackTrace;
         ctx.Server.ClearError();
+        Log.Info("FeedbackErrorPage: Refirect to Feedback Error Page", this);
         Response.Redirect(Constants.FeedbackErrorPageUrl);
       }
     }
@@ -54,9 +52,22 @@ namespace Sitecore.Feedback.Module.PresentationLayer
 
     private string FillEmailTempalte()
     {
+      var screenHeight = string.Empty;
+      var screenWidth = string.Empty;
+      if (Request.Cookies["screen_width"] != null)
+        screenWidth = Request.Cookies["screen_width"].Value;
+      if (Request.Cookies["screen_height"] != null)
+        screenHeight = Request.Cookies["screen_height"].Value;
+
+      var browserName = string.Empty;
+      var browserVersion = string.Empty;
+      if (Request.Cookies["browser_name"] != null)
+        browserName =HttpUtility.UrlDecode(Request.Cookies["browser_name"].Value);
+      if (Request.Cookies["browser_version"] != null)
+        browserVersion = Request.Cookies["browser_version"].Value;
+
       var srHtmlTemplate = new StreamReader(Server.MapPath(Constants.EmailTemplate));
       var htmlTemplate = srHtmlTemplate.ReadToEnd();
-
       var computerInfo = new ComputerInfo();
       var browser = Request.Browser;
       var feedbackProjectName = ConfigurationsUtil.GetProjectName();
@@ -65,12 +76,12 @@ namespace Sitecore.Feedback.Module.PresentationLayer
       {
         ProjectName = feedbackProjectName,
         UserOs = computerInfo.OSFullName,
-        ScreenHeight = SystemInformation.VirtualScreen.Height.ToString(CultureInfo.InvariantCulture),
-        ScreenWidth = SystemInformation.VirtualScreen.Width.ToString(CultureInfo.InvariantCulture),
+        ScreenHeight = screenHeight.ToString(CultureInfo.InvariantCulture),
+        ScreenWidth = screenWidth.ToString(CultureInfo.InvariantCulture),
         Email = tbEmail.Text,
         Comment = tbComment.Text,
-        Browser = browser.Browser,
-        BrowserVersion = browser.Version,
+        Browser = browserName,
+        BrowserVersion = browserVersion,
         ErrorLogRequestUrl = Session["ErrorLog_RequestURL"].ToString(),
         ErrorLogMessage = Session["ErrorLog_Message"].ToString(),
         ErrorLogSource = Session["ErrorLog_Source"].ToString(),

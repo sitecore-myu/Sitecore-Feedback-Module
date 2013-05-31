@@ -1,0 +1,45 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>SFM Create Error</PackageName>
+      <Author>myu</Author>
+      <Version>1.0.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/Website.dll</x-item>
+        <x-item>/layouts/Sample layout.aspx</x-item>
+        <x-item>/layouts/Sample layout.aspx.cs</x-item>
+        <x-item>/layouts/Sample layout.aspx.designer.cs</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Files</Name>
+    </xfiles>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

@@ -138,8 +138,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)App_Config\Sitecore.Feedback.Module.config" $(SolutionDir)App_Config\Include\"
-copy "$(ProjectDir)PresentationLayer\FeedbackErrorPage.aspx" $(SolutionDir)sitecore\service\"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)App_Config\Sitecore.Feedback.Module.config" $(SolutionDir)website\App_Config\Include\"
+copy "$(ProjectDir)PresentationLayer\FeedbackErrorPage.aspx" $(SolutionDir)website\sitecore\service\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
